@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>4 Pics 1 Word</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Pentaminds">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="description">
+        <h2>Welcome to 4 Pics 1 Word</h2>
+        <p>Guess the word using the 4 pictures.</p>
+    </div>
+
+    <div class="difficulty-buttons">
+        <button type= button onclick="startGame('easy')">Easy</button>
+        <button type= button onclick="startGame('medium')">Medium</button>
+        <button type= button onclick="startGame('hard')">Hard</button>
+    </div>
+
+    <p id="level"></p>
+
+    <div class="images">
+        <img id="img1" src="https://static.vecteezy.com/system/resources/thumbnails/004/956/057/small_2x/hand-click-icon-symbol-vector.jpg">
+        <img id="img2" src="https://data.textstudio.com/output/sample/animated/3/1/2/5/easy-3-5213.gif">
+        <img id="img3" src="https://data.textstudio.com/output/sample/animated/2/2/4/5/level-23-5422.gif">
+        <img id="img4" src="https://data.textstudio.com/output/sample/animated/9/6/2/5/first-38-5269.gif">
+    </div>
+
+
+    <input type="text" id="input" placeholder="Enter answer">
+    <button onclick="checkAnswer()">Submit</button>
+
+    <p id="result"></p>
+
+</body>
+
+</html>
