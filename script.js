@@ -1,3 +1,6 @@
+const QUERY = window.location.search;
+const PARAMS = new URLSearchParams(QUERY)
+
 var easyWords = ["cold", "sports", "animal", "charge", "reflection", "ocean", "clock", "snow", "storm", "pet"];
 var mediumWords = ["train", "star", "music", "apple", "candy", "wheel", "dream", "mountain", "flame", "broken", "seasons", "bridge", "sleepover", "pollution", "singer", "cartoons", "pollen", "beach", "journalism", "plant"];
 var hardWords = ["biology", "wealthy", "breakfast", "camouflage", "eclipse", "illusion", "echo", "mosaic", "glacier", "blueprint", "turbulence", "fracture", "pulse", "orbit", "drought", "frostbite", "shatter", "tangled", "shimmer", "shiver", "ripple", "quicksand", "distort", "drizzle", "sway", "drift", "sharp", "twist", "glare", "trace"];
