@@ -58,21 +58,15 @@ function checkAnswer() {
       input.classList.remove("shake");
     }, 300);
   }
-}
-var previousAnswer = checkAnswer;
-
-checkAnswer = function () {
-  previousAnswer();
-
-  if (currentLevel === currentWords.length) {
-    if (currentWords === easyWords) {
-      alert("Easy done! Going to Medium.");
-      startGame("medium");
-    } else if (currentWords === mediumWords) {
-      alert("Medium done! Going to Hard.");
-      startGame("hard");
-    } else {
-      alert("You finished all levels! THANK YOU FOR PLAYING !!!");
-    }
-  }
 };
+
+function validateForm() {
+    let student = document.forms["player-form"]["username"].value;
+    document.forms["player-form"]["username"].value = student.trim();
+
+    if (username.trim() === "") {
+        alert("Name is empty!");
+        return false;
+    }
+    return true;
+}
