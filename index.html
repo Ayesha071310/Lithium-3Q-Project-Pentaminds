@@ -19,11 +19,14 @@
             form the correct word, and once you guess it right, you move on to the next level. As the levels get harder, you
             challenge yourself to think more creatively and logically.</p>
     </div>
-    <form name="player-form" action="game.html" onload="return validateForm()">
+    <form name="player-form" action="game.html" onsubmit="return validateForm()">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" required>
         <br><br>
         <button type="button" onclick="saveUsername()">Save Username</button>
+        <br><br>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset<button>
     </form>
     
     <script src="script.js"></script>
