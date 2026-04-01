@@ -1,0 +1,82 @@
+body { 
+  background-color: rgb(255, 255, 255);
+  background-image: url(https://i.pinimg.com/1200x/33/3d/ef/333def53d2171441b4b90c15cbdbe56a.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 60px;
+  color: white;
+  text-shadow: -2px -2px 0 black;
+}
+
+h2 {
+    font-size: 30px;
+    color: rgb(0, 157, 255);
+    text-shadow: -1px -1px 0 black;
+}
+
+.description {
+  color: white;
+  text-shadow: -2px -2px 0 black;
+  text-align: center;
+  width: 65%;
+  margin: auto;
+}
+
+.description h2 {
+  color: white;
+  text-shadow: -1px -1px 0 black;
+  font-size: 35px;
+}
+
+.description p {
+  color: white;
+  text-shadow: -1.5px -1.5px 0 black;
+  font-size: 30px;
+}
+
+.images img {
+  width: 350px;
+  height: 400px;
+  margin: 5px;
+}
+
+button {
+  padding: 8px 15px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.wrong {
+  border: 2px solid red;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.3s;
+}
