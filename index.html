@@ -2,74 +2,72 @@
 <html>
 
 <head>
-    <title>4 Pics 1 Word</title>
-    <meta charset="UTF-8">
-    <meta name="author" content="Pentaminds">
-    <link rel="stylesheet" href="style.css">
+    <title>4 Pics 1 Word</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Pentaminds">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>4 Pics 1 Word</h1>
-    <h2 id="greetings"></h2>
+    <h1>4 Pics 1 Word</h1>
+    <div class="description">
+        <h2>Welcome to 4 Pics 1 Word</h2>
+        <p>
+            In 4 Pics 1 Word, you look at four different pictures and try to figure out the one word that
+            connects them all. Each image gives you a clue, and you need to think carefully about what they
+            have in common. You use the given letters to form the correct word, and once you guess it right,
+            you move on to the next level. As the levels get harder, you challenge yourself to think more
+            creatively and logically.
+        </p>
+    </div>
 
-    <div class="description">
-        <h2>Welcome to 4 Pics 1 Word</h2>
-        <p>In 4 Pics 1 Word, you look at four different pictures and try to figure out the one word that connects them
-            all. Each
-            image gives you a clue, and you need to think carefully about what they have in common. You use the given
-            letters to
-            form the correct word, and once you guess it right, you move on to the next level. As the levels get harder,
-            you
-            challenge yourself to think more creatively and logically.</p>
-    </div>
-    <form name="player-form" action="game.html" onsubmit="return validateForm()">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        <br><br>
-        <button type="button" onclick="saveUsername()">Save Username</button>
-        <br><br>
-        <button type="submit">Start</button>
-        <button type="reset">Reset</button>
-    </form>
+    <form name="player-form" action="game.html" onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        <br><br>
+        <button type="button" onclick="saveUsername()">Save Username</button>
+        <br><br>
+        <button type="submit">Start</button>
+        <button type="reset">Reset</button>
+    </form>
 
-    <div class="leaderboard">
-        <h3>Leaderboard</h3>
-        <table id="leaderboardTable">
-            <tr>
-                <th>Rank</th>
-                <th>Player</th>
-                <th>Score</th>
-            </tr>
-            <tr id="leaderboard1">
-                <td>1</td>
-                <td>-</td>
-                <td>0</td>
-            </tr>
-            <tr id="leaderboard2">
-                <td>2</td>
-                <td>-</td>
-                <td>0</td>
-            </tr>
-            <tr id="leaderboard3">
-                <td>3</td>
-                <td>-</td>
-                <td>0</td>
-            </tr>
-            <tr id="leaderboard4">
-                <td>4</td>
-                <td>-</td>
-                <td>0</td>
-            </tr>
-            <tr id="leaderboard5">
-                <td>5</td>
-                <td>-</td>
-                <td>0</td>
-            </tr>
-        </table>
-    </div>
+    <div class="leaderboard">
+        <h3>Leaderboard</h3>
+        <table id="leaderboardTable">
+            <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>Score</th>
+            </tr>
+            <tr id="leaderboard1">
+                <td>1</td>
+                <td>-</td>
+                <td>0</td>
+            </tr>
+            <tr id="leaderboard2">
+                <td>2</td>
+                <td>-</td>
+                <td>0</td>
+            </tr>
+            <tr id="leaderboard3">
+                <td>3</td>
+                <td>-</td>
+                <td>0</td>
+            </tr>
+            <tr id="leaderboard4">
+                <td>4</td>
+                <td>-</td>
+                <td>0</td>
+            </tr>
+            <tr id="leaderboard5">
+                <td>5</td>
+                <td>-</td>
+                <td>0</td>
+            </tr>
+        </table>
+    </div>
 
-    <script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
