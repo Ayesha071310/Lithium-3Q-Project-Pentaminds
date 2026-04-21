@@ -29,7 +29,7 @@ window.onload = function () {
     var greeting = this.document.getElementById("greetings");
 
     if (savedUsername !== null  && greeting !== null) {
-        greeting.innerText = `Welcome ${savedUsername}`;
+        greeting.innerText = `Hello ${savedUsername}`;
     }
 }
 
