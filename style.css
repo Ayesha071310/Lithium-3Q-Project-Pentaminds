@@ -1,116 +1,116 @@
-body { 
-  background-color: rgb(255, 255, 255);
-  background-image: url("https://i.pinimg.com/1200x/33/3d/ef/333def53d2171441b4b90c15cbdbe56a.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'Times New Roman', Times, serif;
-  text-align: center;
+body {
+  background-color: rgb(255, 255, 255);
+  background-image: url('https://i.pinimg.com/1200x/33/3d/ef/333def53d2171441b4b90c15cbdbe56a.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
 }
 
 h1 {
-  font-size: 60px;
-  color: white;
-  text-shadow: -2px -2px 0 black;
+  font-size: 60px;
+  color: white;
+  text-shadow: -2px -2px 0 black;
 }
 
 h2 {
-  font-size: 30px;
-  color: rgb(0, 157, 255);
-  text-shadow: -1px -1px 0 black;
+  font-size: 30px;
+  color: rgb(0, 157, 255);
+  text-shadow: -1px -1px 0 black;
 }
 
 .description {
-  color: white;
-  text-shadow: -2px -2px 0 black;
-  text-align: center;
-  width: 65%;
-  margin: auto;
+  color: white;
+  text-shadow: -2px -2px 0 black;
+  text-align: center;
+  width: 65%;
+  margin: auto;
 }
 
 .description h2 {
-  color: white;
-  text-shadow: -1px -1px 0 black;
-  font-size: 35px;
+  color: white;
+  text-shadow: -1px -1px 0 black;
+  font-size: 35px;
 }
 
 .description p {
-  color: white;
-  text-shadow: -1.5px -1.5px 0 black;
-  font-size: 30px;
+  color: white;
+  text-shadow: -1.5px -1.5px 0 black;
+  font-size: 30px;
 }
 
 .images img {
-  width: 350px;
-  height: 400px;
-  margin: 5px;
+  width: 350px;
+  height: 400px;
+  margin: 5px;
 }
 
 button {
-  padding: 8px 15px;
-  margin: 5px;
-  cursor: pointer;
+  padding: 8px 15px;
+  margin: 5px;
+  cursor: pointer;
 }
 
 .leaderboard {
-  margin: 40px auto 30px auto;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
-  width: 300px;
-  backdrop-filter: blur(10px);
-  box-shadow: o 8px 20px rgba(0, 0, 0, 0.15);
+  margin: 40px auto 30px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  width: 300px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .leaderboard h3 {
-  color: #FF8C5A;
-  font-size: 24px;
-  margin-bottom: 15px;
+  color: #FF8C5A;
+  font-size: 24px;
+  margin-bottom: 15px;
 }
 
 #leaderboardTable {
-  width: 100%;
-  color: rgb(0, 0, 0);
-  border-collapse: collapse;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  border-collapse: collapse;
 }
 
 #leaderboardTable th {
-  color: #3A2B2B;
-  padding: 8px;
-  border-bottom: 2px solid rgb(16, 21, 59);
+  color: #3A2B2B;
+  padding: 8px;
+  border-bottom: 2px solid rgb(16, 21, 59);
 }
 
 #leaderboardTable td {
-  padding: 8px;
-  border-bottom: 1px solid #3A2B2B;
+  padding: 8px;
+  border-bottom: 1px solid #3A2B2B;
 }
 
 .wrong {
-  border: 2px solid red;
+  border: 2px solid red;
 }
 
 @keyframes shake {
-  0% {
-    transform: translateX(0);
-  }
+  0% {
+    transform: translateX(0);
+  }
 
-  25% {
-    transform: translateX(-5px);
-  }
+  25% {
+    transform: translateX(-5px);
+  }
 
-  50% {
-    transform: translateX(5px);
-  }
+  50% {
+    transform: translateX(5px);
+  }
 
-  75% {
-    transform: translateX(-5px);
-  }
+  75% {
+    transform: translateX(-5px);
+  }
 
-  100% {
-    transform: translateX(0);
-  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .shake {
-  animation: shake 0.3s;
+  animation: shake 0.3s;
 }
