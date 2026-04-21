@@ -80,17 +80,7 @@ function startGame(difficulty) {
 }
 
 function addToLeaderboard(name, score) {
-  name = name.trim().toLowerCase();
-for (var i = 0; i < leaderboard.length; i++) {
-  if (leaderboard[i].player === name) {
-    leaderboard[i].score += score;
-    found = true;
-    break;
-  }
-}
-  if (!found) {
-    leaderboard.push({ player: name, score: score });
-  }
+  leaderboard.push({ player: name, score: score });
 
   leaderboard.sort(function (a, b) {
     return b.score - a.score;
@@ -162,7 +152,7 @@ function checkAnswer() {
       currentScore += 30;
     }
 
-    document.getElementById("score").innerText = "Score: " + currentScore;
+    document.getElementById("score").innerText = "Score:" + currentScore;
 
     currentLevel++;
 
@@ -170,12 +160,17 @@ function checkAnswer() {
       showLevel();
     } else {
       result.innerText = "You finished this level! Score: " + currentScore + ". Go to the next level!";
-      var name = localStorage.getItem("username");  
-      if (name === null || name.trim() === "") {
-      name = "Player";
-      }
 
-addToLeaderboard(name, currentScore);
+      if (!playerAdded) {
+        if (name && name.trim() !== "") {
+          addToLeaderboard(name, currentScore);
+        } else {
+          addToLeaderboard("Player", currentScore);
+        }
+        playerAdded = true;
+      } else {
+        addToLeaderboard(name, currentScore);
+      }
     }
   } else {
     result.innerText = "Wrong!";
@@ -187,5 +182,4 @@ addToLeaderboard(name, currentScore);
     }, 300);
   }
 }
-
 
