@@ -80,22 +80,6 @@ function checkAnswer() {
     }
 }
 
-function validateForm() {
-    let student = document.forms["player-form"]["username"].value;
-    document.forms["player-form"]["username"].value = student.trim();
-
-    if (student.trim() === "") {
-        alert("Name is empty!");
-        return false;
-    }
-    if (!/^[A-Za-z0-9_]+$/.test(student)) {
-        alert("Username should only inlucde letters, numbers, and underscores.")
-        return false;
-    }
-    localStorage.setItem("username", student);
-    return true;
-}
-
 window.onload = function () {
     var savedUsername = localStorage.getItem("username");
     var greeting = this.document.getElementById("greetings");
