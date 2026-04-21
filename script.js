@@ -80,7 +80,16 @@ function startGame(difficulty) {
 }
 
 function addToLeaderboard(name, score) {
-  leaderboard.push({ player: name, score: score });
+  name = name.trim().toLowerCase();
+for (var i = 0; i < leaderboard.length; i++) {
+  if (leaderboard[i].player === name) {
+    leaderboard[i].score += score;
+    break;
+  }
+}
+  if (!found) {
+    leaderboard.push({ player: name, score: score });
+  }
 
   leaderboard.sort(function (a, b) {
     return b.score - a.score;
