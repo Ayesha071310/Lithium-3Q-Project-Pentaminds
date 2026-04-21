@@ -156,7 +156,7 @@ function checkAnswer() {
     if (currentLevel < currentWords.length) {
       showLevel();
     } else {
-      result.innerText = "You finished all levels! Score: " + currentScore;
+      result.innerText = "You finished this level! Score: " + currentScore "Go to the next level!;
 
       var name = localStorage.getItem("username");
 
