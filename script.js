@@ -24,6 +24,15 @@ function saveUsername() {
     return true;
 }
 
+window.onload = function () {
+    var savedUsername = localStorage.getItem("username");
+    var greeting = this.document.getElementById("greetings");
+
+    if (savedUsername !== null  && greeting !== null) {
+        greeting.innerText = `Welcome ${savedUsername}`;
+    }
+}
+
 function startGame(difficulty) {
     if (difficulty === "easy") {
         currentWords = easyWords;
@@ -77,14 +86,5 @@ function checkAnswer() {
         setTimeout(function () {
             input.classList.remove("shake");
         }, 300);
-    }
-}
-
-window.onload = function () {
-    var savedUsername = localStorage.getItem("username");
-    var greeting = this.document.getElementById("greetings");
-
-    if (savedUsername !== null  && greeting !== null) {
-        greeting.innerText = `Welcome ${savedUsername}`;
     }
 }
