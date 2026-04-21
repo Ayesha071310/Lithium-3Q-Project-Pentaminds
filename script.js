@@ -33,6 +33,21 @@ window.onload = function () {
     }
 }
 
+var currentWords = null;
+var currentLevel = 0;
+var folder = "";
+var currentScore = 0;
+var playerName = "Player";
+
+
+var leaderboard = [];
+
+
+window.onload = function() {
+    loadLeaderboard();
+    updateLeaderboardDisplay();
+};
+
 function startGame(difficulty) {
     if (difficulty === "easy") {
         currentWords = easyWords;
@@ -65,19 +80,39 @@ function checkAnswer() {
         alert("Please choose a difficulty first!");
         return;
     }
-
     var input = document.getElementById("input");
     var result = document.getElementById("result");
     var userAnswer = input.value.toLowerCase();
 
+    function checkAnswer() {
+        var input = document.getElementById("input").value;
+        var result = document.getElementById("result").value;
+        var userAnswer = input.value.toLowerCase().trim();
+
     if (userAnswer === currentWords[currentLevel]) {
         result.innerText = "Correct!";
         result.style.color = "lightgreen";
+        
+        if (currentWords === easyWords) {
+            currentScore += 10;
+        } else if (currentWords === mediumWords) {
+            currentScore += 20;
+        } else if (currentWords === hardWords) {
+            currentScore += 30;
+        }
+        
         currentLevel++;
         if (currentLevel < currentWords.length) {
             showLevel();
         } else {
-            result.innerText = "You finished all levels!";
+            result.innerText = "You finished all levels! Score: " + currentScore;
+            
+            var name = prompt("Congratulations! Enter your name for leaderboard:", "Player");
+            if (name && name.trim() !== "") {
+                addToLeaderboard(name, currentScore);
+            } else {
+                addToLeaderboard("Player", currentScore);
+            }
         }
     } else {
         result.innerText = "Wrong!";
@@ -86,5 +121,49 @@ function checkAnswer() {
         setTimeout(function () {
             input.classList.remove("shake");
         }, 300);
+    }
+}
+function addToLeaderboard(name, score) {
+    leaderboard.push({ player: name, score: score });
+    leaderboard.sort(function(a, b) {
+        return b.score - a.score;
+    });
+    if (leaderboard.length > 5) {
+        leaderboard = leaderboard.slice(0, 5);
+    }
+    localStorage.setItem('4pics1word_leaderboard', JSON.stringify(leaderboard));
+    updateLeaderboardDisplay();
+}
+
+function loadLeaderboard() {
+    var saved = localStorage.getItem('4pics1word_leaderboard');
+    if (saved) {
+        leaderboard = JSON.parse(saved);
+    } else {
+       
+        leaderboard = [];
+    }
+}
+
+function updateLeaderboardDisplay() {
+    for (var i = 0; i < 5; i++) {
+        var row = document.getElementById("leaderboard" + (i + 1));
+        if (row) {
+            if (leaderboard[i]) {
+                row.innerHTML = "<td>" + (i + 1) + "</td><td>" + leaderboard[i].player + "</td><td>" + leaderboard[i].score + "</td>";
+            } else {
+                row.innerHTML = "<td>" + (i + 1) + "</td><td>-</td><td>0</td>";
+            }
+        }
+    }
+}
+
+
+function clearLeaderboard() {
+    if (confirm("Clear all leaderboard data")) {
+
+        localStorage.removeItem('4pics1word_leaderboard');
+        leaderboard = [];
+        updateLeaderboardDisplay();
     }
 }
