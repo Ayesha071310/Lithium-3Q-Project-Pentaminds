@@ -10,6 +10,7 @@ var currentLevel = 0;
 var folder = "";
 var currentScore = 0;
 var leaderboard = [];
+var playerAdded = false;
 
 function saveUsername() {
   var username = document.getElementById("username").value.trim();
@@ -71,7 +72,9 @@ function startGame(difficulty) {
   }
 
   currentLevel = 0;
-  currentScore = 0;
+  if (currentLevel === 0) {
+    currentScore = 0;
+  }
   document.getElementById("score").innerText = "Score: 0";
   showLevel();
 }
@@ -156,14 +159,17 @@ function checkAnswer() {
     if (currentLevel < currentWords.length) {
       showLevel();
     } else {
-      result.innerText = "You finished this level! Score: " + currentScore "Go to the next level!;
+      result.innerText = "You finished this level! Score: " + currentScore + ". Go to the next level!";
 
-      var name = localStorage.getItem("username");
-
-      if (name && name.trim() !== "") {
-        addToLeaderboard(name, currentScore);
+      if (!playerAdded) {
+        if (name && name.trim() !== "") {
+          addToLeaderboard(name, currentScore);
+        } else {
+          addToLeaderboard("Player", currentScore);
+        }
+        playerAdded = true;
       } else {
-        addToLeaderboard("Player", currentScore);
+        addToLeaderboard(name, currentScore);
       }
     }
   } else {
