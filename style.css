@@ -1,6 +1,6 @@
 body { 
   background-color: rgb(255, 255, 255);
-  background-image: url(https://i.pinimg.com/1200x/33/3d/ef/333def53d2171441b4b90c15cbdbe56a.jpg);
+  background-image: url("https://i.pinimg.com/1200x/33/3d/ef/333def53d2171441b4b90c15cbdbe56a.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
