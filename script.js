@@ -12,168 +12,169 @@ var currentScore = 0;
 var leaderboard = [];
 
 function saveUsername() {
-    var username = document.getElementById("username").value.trim();
+  var username = document.getElementById("username").value.trim();
 
-    if (username === "") {
-        alert("Name is empty!");
-        return false;
-    }
+  if (username === "") {
+    alert("Name is empty!");
+    return false;
+  }
 
-    if (!/^[A-Za-z0-9_]+$/.test(username)) {
-        alert("Username should only include letters, numbers, and underscores.");
-        return false;
-    }
+  if (!/^[A-Za-z0-9_]+$/.test(username)) {
+    alert("Username should only include letters, numbers, and underscores.");
+    return false;
+  }
 
-    localStorage.setItem("username", username);
-    alert("Username saved!");
-    return true;
-}
-
-function startGame(difficulty) {
-    if (difficulty === "easy") {
-        currentWords = easyWords;
-        folder = "easy/";
-    } else if (difficulty === "medium") {
-        currentWords = mediumWords;
-        folder = "medium/";
-    } else if (difficulty === "hard") {
-        currentWords = hardWords;
-        folder = "";
-    }
-
-    currentLevel = 0;
-    currentScore = 0;
-    document.getElementById("score").innerText = "Score: 0";
-    showLevel();
-}
-
-function showLevel() {
-    document.getElementById("level").innerText = "Level " + (currentLevel + 1);
-
-    var startImg = currentLevel * 4 + 1;
-    document.getElementById("img1").src = folder + "img" + startImg + ".jpg";
-    document.getElementById("img2").src = folder + "img" + (startImg + 1) + ".jpg";
-    document.getElementById("img3").src = folder + "img" + (startImg + 2) + ".jpg";
-    document.getElementById("img4").src = folder + "img" + (startImg + 3) + ".jpg";
-
-    document.getElementById("input").value = "";
-    document.getElementById("result").innerText = "";
-    document.getElementById("input").classList.remove("wrong", "shake");
-}
-
-function checkAnswer() {
-    if (currentWords === null) {
-        alert("Please choose a difficulty first!");
-        return;
-    }
-
-    var input = document.getElementById("input");
-    var result = document.getElementById("result");
-    var userAnswer = input.value.toLowerCase().trim();
-
-    if (userAnswer === currentWords[currentLevel]) {
-        result.innerText = "Correct!";
-        result.style.color = "lightgreen";
-
-        if (currentWords === easyWords) {
-            currentScore += 10;
-        } else if (currentWords === mediumWords) {
-            currentScore += 20;
-        } else if (currentWords === hardWords) {
-            currentScore += 30;
-        }
-
-        document.getElementById("score").innerText = "Score: " + currentScore;
-
-        currentLevel++;
-
-        if (currentLevel < currentWords.length) {
-            showLevel();
-        } else {
-            result.innerText = "You finished all levels! Score: " + currentScore;
-
-            var name = localStorage.getItem("username");
-
-            if (name && name.trim() !== "") {
-                addToLeaderboard(name, currentScore);
-            } else {
-                addToLeaderboard("Player", currentScore);
-            }
-        }
-    } else {
-        result.innerText = "Wrong!";
-        result.style.color = "red";
-        input.classList.add("wrong", "shake");
-
-        setTimeout(function () {
-            input.classList.remove("shake");
-        }, 300);
-    }
+  localStorage.setItem("username", username);
+  alert("Username saved!");
+  return true;
 }
 
 function validateForm() {
-    var student = document.forms["player-form"]["username"].value.trim();
-    document.forms["player-form"]["username"].value = student;
+  var username = document.getElementById("username").value.trim();
 
-    if (student === "") {
-        alert("Name is empty!");
-        return false;
-    }
+  if (username === "") {
+    alert("Name is empty!");
+    return false;
+  }
 
-    if (!/^[A-Za-z0-9_]+$/.test(student)) {
-        alert("Username should only include letters, numbers, and underscores.");
-        return false;
-    }
+  if (!/^[A-Za-z0-9_]+$/.test(username)) {
+    alert("Username should only include letters, numbers, and underscores.");
+    return false;
+  }
 
-    localStorage.setItem("username", student);
-    return true;
-}
-
-function addToLeaderboard(name, score) {
-    leaderboard.push({ player: name, score: score });
-
-    leaderboard.sort(function (a, b) {
-        return b.score - a.score;
-    });
-
-    if (leaderboard.length > 5) {
-        leaderboard = leaderboard.slice(0, 5);
-    }
-
-    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-    updateLeaderboardDisplay();
-}
-
-function loadLeaderboard() {
-    var savedLeaderboard = localStorage.getItem("leaderboard");
-
-    if (savedLeaderboard !== null) {
-        leaderboard = JSON.parse(savedLeaderboard);
-    }
-}
-
-function updateLeaderboardDisplay() {
-    for (var i = 0; i < 5; i++) {
-        var row = document.getElementById("leaderboard" + (i + 1));
-
-        if (row !== null) {
-            if (leaderboard[i]) {
-                row.innerHTML = "<td>" + (i + 1) + "</td><td>" + leaderboard[i].player + "</td><td>" + leaderboard[i].score + "</td>";
-            } else {
-                row.innerHTML = "<td>" + (i + 1) + "</td><td>-</td><td>0</td>";
-            }
-        }
-    }
+  localStorage.setItem("username", username);
+  return true;
 }
 
 window.onload = function () {
-    var savedUsername = localStorage.getItem("username");
-    var greeting = document.getElementById("greetings");
+  var savedUsername = localStorage.getItem("username");
+  var greeting = document.getElementById("greetings");
 
-    if (savedUsername !== null && greeting !== null) {
-        greeting.innerText = `Welcome ${savedUsername}!`;
-    }
+  if (savedUsername !== null && greeting !== null) {
+    greeting.innerText = `${savedUsername}!`;
+  }
 
-    loadLeaderboard();
-    updateLeaderboardDisplay();
+  loadLeaderboard();
+  updateLeaderboardDisplay();
 };
+
+function startGame(difficulty) {
+  if (difficulty === "easy") {
+    currentWords = easyWords;
+    folder = "easy/";
+  } else if (difficulty === "medium") {
+    currentWords = mediumWords;
+    folder = "medium/";
+  } else if (difficulty === "hard") {
+    currentWords = hardWords;
+    folder = "";
+  }
+
+  currentLevel = 0;
+  currentScore = 0;
+  document.getElementById("score").innerText = "Score: 0";
+  showLevel();
+}
+
+function addToLeaderboard(name, score) {
+  leaderboard.push({ player: name, score: score });
+
+  leaderboard.sort(function (a, b) {
+    return b.score - a.score;
+  });
+
+  if (leaderboard.length > 5) {
+    leaderboard = leaderboard.slice(0, 5);
+  }
+
+  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+  updateLeaderboardDisplay();
+}
+
+function loadLeaderboard() {
+  var savedLeaderboard = localStorage.getItem("leaderboard");
+
+  if (savedLeaderboard !== null) {
+    leaderboard = JSON.parse(savedLeaderboard);
+  }
+}
+
+function updateLeaderboardDisplay() {
+  for (var i = 0; i < 5; i++) {
+    var row = document.getElementById("leaderboard" + (i + 1));
+
+    if (row !== null) {
+      if (leaderboard[i]) {
+        row.innerHTML = "<td>" + (i + 1) + "</td><td>" + leaderboard[i].player + "</td><td>" + leaderboard[i].score + "</td>";
+      } else {
+        row.innerHTML = "<td>" + (i + 1) + "</td><td>-</td><td>0</td>";
+      }
+    }
+  }
+}
+
+function showLevel() {
+  document.getElementById("level").innerText = "Level " + (currentLevel + 1);
+
+  var startImg = currentLevel * 4 + 1;
+  document.getElementById("img1").src = folder + "img" + startImg + ".jpg";
+  document.getElementById("img2").src = folder + "img" + (startImg + 1) + ".jpg";
+  document.getElementById("img3").src = folder + "img" + (startImg + 2) + ".jpg";
+  document.getElementById("img4").src = folder + "img" + (startImg + 3) + ".jpg";
+
+  document.getElementById("input").value = "";
+  document.getElementById("result").innerText = "";
+  document.getElementById("input").classList.remove("wrong", "shake");
+}
+
+function checkAnswer() {
+  if (currentWords === null) {
+    alert("Please choose a difficulty first!");
+    return;
+  }
+
+  var input = document.getElementById("input");
+  var result = document.getElementById("result");
+  var userAnswer = input.value.toLowerCase().trim();
+
+  if (userAnswer === currentWords[currentLevel]) {
+    result.innerText = "Correct!";
+    result.style.color = "lightgreen";
+
+    if (currentWords === easyWords) {
+      currentScore += 10;
+    } else if (currentWords === mediumWords) {
+      currentScore += 20;
+    } else if (currentWords === hardWords) {
+      currentScore += 30;
+    }
+
+    document.getElementById("score").innerText = "Score: " + currentScore;
+
+    currentLevel++;
+
+    if (currentLevel < currentWords.length) {
+      showLevel();
+    } else {
+      result.innerText = "You finished all levels! Score: " + currentScore;
+
+      var name = localStorage.getItem("username");
+
+      if (name && name.trim() !== "") {
+        addToLeaderboard(name, currentScore);
+      } else {
+        addToLeaderboard("Player", currentScore);
+      }
+    }
+  } else {
+    result.innerText = "Wrong!";
+    result.style.color = "red";
+    input.classList.add("wrong", "shake");
+
+    setTimeout(function () {
+      input.classList.remove("shake");
+    }, 300);
+  }
+}
+
+
