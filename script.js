@@ -160,17 +160,12 @@ function checkAnswer() {
       showLevel();
     } else {
       result.innerText = "You finished this level! Score: " + currentScore + ". Go to the next level!";
-
-      if (!playerAdded) {
-        if (name && name.trim() !== "") {
-          addToLeaderboard(name, currentScore);
-        } else {
-          addToLeaderboard("Player", currentScore);
-        }
-        playerAdded = true;
-      } else {
-        addToLeaderboard(name, currentScore);
+      var name = localStorage.getItem("username");  
+      if (name === null || name.trim() === "") {
+      name = "Player";
       }
+
+addToLeaderboard(name, currentScore);
     }
   } else {
     result.innerText = "Wrong!";
