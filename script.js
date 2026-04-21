@@ -84,6 +84,7 @@ function addToLeaderboard(name, score) {
 for (var i = 0; i < leaderboard.length; i++) {
   if (leaderboard[i].player === name) {
     leaderboard[i].score += score;
+    found = true;
     break;
   }
 }
