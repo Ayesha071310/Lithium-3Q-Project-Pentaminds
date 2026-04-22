@@ -16,10 +16,17 @@ var attempted = false;
 
 function saveUsername() {
   var username = document.getElementById("username").value.trim();
-  if (username === "") return false;
-  if (!/^[A-Za-z0-9_]+$/.test(username)) return false;
+  if (username === "") {
+    alert("Name is empty!");
+    return false;
+  }
+  if (!/^[A-Za-z0-9_]+$/.test(username)) {
+    alert("Username should only include letters, numbers, and underscores.");
+    return false;
+  }
   localStorage.setItem("username", username);
   playerName = username;
+  alert("Username saved!");
   return true;
 }
 
