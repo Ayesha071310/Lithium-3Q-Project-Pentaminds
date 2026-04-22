@@ -23,10 +23,10 @@ function saveUsername() {
     alert("Username should only include letters, numbers, and underscores.");
     return false;
   } else {
-  localStorage.setItem("username", username);
-  playerName = username;
-  alert("Username saved!");
-  return true;
+    localStorage.setItem("username", username);
+    playerName = username;
+    alert("Username saved!");
+    return true;
   }
 }
 
@@ -76,9 +76,11 @@ function addToLeaderboard(name, score) {
   leaderboard.sort(function (a, b) {
     return b.score - a.score;
   });
+
   if (leaderboard.length > 5) {
     leaderboard = leaderboard.slice(0, 5);
   }
+
   localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
   updateLeaderboardDisplay();
 }
@@ -118,9 +120,11 @@ function showLevel() {
 
 function checkAnswer() {
   if (currentWords === null) return;
+
   var input = document.getElementById("input");
   var result = document.getElementById("result");
   var userAnswer = input.value.toLowerCase().trim();
+
   if (!attempted) attempted = true;
 
   if (userAnswer === currentWords[currentLevel]) {
@@ -139,8 +143,19 @@ function checkAnswer() {
       showLevel();
     } else {
       result.innerText = "Finished! Total Score: " + currentScore;
+
       if (!playerAdded) {
-        addToLeaderboard(playerName, currentScore);
+
+        var previous = 0;
+
+        for (var i = 0; i < leaderboard.length; i++) {
+          if (leaderboard[i].player === playerName) {
+            previous = leaderboard[i].score;
+            break;
+          }
+        }
+
+        addToLeaderboard(playerName, currentScore - previous);
         playerAdded = true;
       }
     }
@@ -160,8 +175,19 @@ function checkAnswer() {
         setTimeout(showLevel, 500);
       } else {
         result.innerText = "Finished! Total Score: " + currentScore;
+
         if (!playerAdded) {
-          addToLeaderboard(playerName, currentScore);
+
+          var previous = 0;
+
+          for (var i = 0; i < leaderboard.length; i++) {
+            if (leaderboard[i].player === playerName) {
+              previous = leaderboard[i].score;
+              break;
+            }
+          }
+
+          addToLeaderboard(playerName, currentScore - previous);
           playerAdded = true;
         }
       }
