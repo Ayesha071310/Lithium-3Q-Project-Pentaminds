@@ -58,7 +58,21 @@ function startGame(difficulty) {
 }
 
 function addToLeaderboard(name, score) {
-  leaderboard.push({ player: name, score: score });
+  var existingPlayer = null;
+
+  for (var i = 0; i < leaderboard.length; i++) {
+    if (leaderboard[i].player === name) {
+      existingPlayer = leaderboard[i];
+      break;
+    }
+  }
+
+  if (existingPlayer) {
+    existingPlayer.score += score;
+  } else {
+    leaderboard.push({ player: name, score: score });
+  }
+
   leaderboard.sort(function (a, b) {
     return b.score - a.score;
   });
