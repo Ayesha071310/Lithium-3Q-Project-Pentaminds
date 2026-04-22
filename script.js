@@ -19,24 +19,15 @@ function saveUsername() {
   if (username === "") {
     alert("Name is empty!");
     return false;
-  }
-  if (!/^[A-Za-z0-9_]+$/.test(username)) {
+  } else if (!/^[A-Za-z0-9_]+$/.test(username)) {
     alert("Username should only include letters, numbers, and underscores.");
     return false;
-  }
+  } else {
   localStorage.setItem("username", username);
   playerName = username;
   alert("Username saved!");
   return true;
-}
-
-function validateForm() {
-  var username = document.getElementById("username").value.trim();
-  if (username === "") return false;
-  if (!/^[A-Za-z0-9_]+$/.test(username)) return false;
-  localStorage.setItem("username", username);
-  playerName = username;
-  return true;
+  }
 }
 
 window.onload = function () {
